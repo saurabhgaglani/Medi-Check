@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MediApp</string>
+
+    <string name="facebook_app_id">668787710749624</string>
+    <string name="fb_login_protocol_scheme">fb668787710749624</string>
+
+</resources>

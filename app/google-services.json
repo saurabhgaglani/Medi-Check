@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "191929990032",
+    "project_id": "mediapp-c6644",
+    "storage_bucket": "mediapp-c6644.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191929990032:android:228dc6edc21cf0008d9115",
+        "android_client_info": {
+          "package_name": "com.example.mediapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191929990032-jciui220qoige8s4binsgmvij1s3bvkr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh_LQuFhuiUgpFzDUUzE_YC-aKk1WjDrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191929990032-jciui220qoige8s4binsgmvij1s3bvkr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
