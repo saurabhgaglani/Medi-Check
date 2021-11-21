@@ -1,5 +1,6 @@
 const SHA256 = require('crypto-js/sha256');
 
+
 class Block
 {
     constructor(index, timestamp, data, previous_hash = '')
@@ -9,18 +10,30 @@ class Block
         this.data = data;
         this.previous_hash = previous_hash;
         this.hash = this.generateHash();
+        this.nonce = 0;
     }
 
     generateHash()
     {
-        return SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previous_hash).toString();
+        return SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previous_hash + this.nonce).toString();
     }
+
+    mineBlock(difficulty)
+    {
+        while(this.hash.substring(0,difficulty) != Array(difficulty + 1).join("0"))
+        {
+            this.nonce += 1;
+            this.hash = this.generateHash();
+
+        }
+    }
+
 
 }
 
 
 
-    class Blockchain
+   class Blockchain
 {
     constructor()
     {
@@ -40,9 +53,10 @@ class Block
     addBlock(newBlock)
     {
         newBlock.previous_hash = this.getLastBlock().hash; 
-        newBlock.hash = newBlock.generateHash();  
+        newBlock.mineBlock(2); 
         this.chain.push(newBlock);
     }
+
 
     isChainValid()
     {
@@ -65,13 +79,23 @@ class Block
         return true;
     }
 
+    createNewBlock(index, date, data)
+    {
+        let medCoin = new Blockchain();
+
+        medCoin.addBlock(new Block(index, date, data));
+        medCoin.addBlock(new Block(2,"27/09/2021", {amount : 1}));
+        medCoin.addBlock(new Block(3,"30/09/2021", {amount : 8}));
+
+        console.log(JSON.stringify(medCoin, null, 5));
+        //console.log(medCoin.isChainValid());
+    }
+    
 }
 
-let medCoin = new Blockchain();
 
-medCoin.addBlock(new Block(1,"27/09/2021", {amount : 4}));
-medCoin.addBlock(new Block(2,"27/09/2021", {amount : 1}));
-medCoin.addBlock(new Block(3,"30/09/2021", {amount : 8}));
+module.exports = Blockchain;
 
-console.log(JSON.stringify(medCoin, null, 5));
-console.log(medCoin.isChainValid());
+
+
+
