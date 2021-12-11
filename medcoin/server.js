@@ -9,6 +9,8 @@ server.use(express.json());
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const Blockchain = require('./index')
 const d = new Blockchain();
+var i = 0;
+
 
 
 server.listen(3000, ()=>
@@ -21,9 +23,9 @@ async function getData()
         try
         {
             server.post("/", (req, res) => 
-            {  
-                d.createNewBlock(1, "27/10/2020", req.body.body)
-              
+            { 
+                d.createNewBlock(++i, "27/10/2020", req.body.body)
+                res.write(`index ${i} added`)
             });
             
         }
