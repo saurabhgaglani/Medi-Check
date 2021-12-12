@@ -9,14 +9,20 @@ server.use(express.json());
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const Blockchain = require('./index')
 const d = new Blockchain();
-var i = 0;
+var i = 4;
+const PORT = process.env.PORT || 3000;
 
 
+server.use(express.urlencoded({extended: false}));
+server.use(express.json());
 
-server.listen(3000, ()=>
+
+server.listen(PORT, ()=>
 {
     console.log("****SERVER RUNNING****");
 });
+
+
 
 async function getData()
     {
@@ -24,8 +30,9 @@ async function getData()
         {
             server.post("/", (req, res) => 
             { 
-                d.createNewBlock(++i, "27/10/2020", req.body.body)
+                d.createNewBlock(++i,+ new Date(), req.body.body)
                 res.write(`index ${i} added`)
+                res.status(200).end();
             });
             
         }

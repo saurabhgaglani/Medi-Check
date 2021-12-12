@@ -6,12 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "16.11.1",
+    "npm": "8.0.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
     "fetch": "^1.1.0",
+    "mongoose": "^6.1.1",
     "node-fetch": "^3.0.0"
   }
 }
